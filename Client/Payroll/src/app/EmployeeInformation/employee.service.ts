@@ -12,6 +12,7 @@ export class EmployeeService {
 
   URL:string = environment.apiBaseUrl + '/EmployeePersonal';
   employeeList: EmployeePersonal[]=[];
+  employeeData:EmployeePersonal = new EmployeePersonal();
 
      
   getAllemployee(){
@@ -26,5 +27,10 @@ export class EmployeeService {
     }
   })   
 }
+
+saveEmployee(){
+  return this.http.post(this.URL,this.employeeData)
+  
+ }
 
 }
