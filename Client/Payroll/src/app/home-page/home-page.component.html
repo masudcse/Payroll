@@ -1,0 +1,49 @@
+<!-- Top Header -->
+<nav class="navbar navbar-expand-lg navbar-light bg-success">
+    <div class="container-fluid">
+      <!-- Logo on the left -->
+      <div>
+        <a class="navbar-brand" href="#">
+          <img src="assets/Payroll.png" alt="Logo" class="logo" style="width: 40px;">
+        </a>
+      
+        <span class="navbar-text ms-auto text-white fw-bold">Payroll</span>
+      </div>
+      <!-- Hamburger icon for the sidenav (mobile view) -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </nav>
+  
+  <!-- Sidebar and Main Content Layout -->
+  <div class="d-flex">
+    <!-- Sidebar -->
+    <div class="bg-light" id="navbarNav" style="width: 250px;">
+      <div class="list-group">
+        <a routerLink="/home" class="list-group-item list-group-item-action">Home</a>
+        <a routerLink="/setup" class="list-group-item list-group-item-action">Setup</a>
+  
+        <!-- Nested Menu for Employee -->
+        <div class="dropdown">
+          <button class="btn btn-light dropdown-toggle w-45" type="button" id="employeeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            Employee
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="employeeDropdown">
+            <li><a class="dropdown-item" routerLink="/Home/Employee">Employee Personal</a></li>
+            <li><a class="dropdown-item" routerLink="/employee/employeeofficial">Employee Official</a></li>
+          </ul>
+        </div>
+        <a routerLink="/attendance" class="list-group-item list-group-item-action">Attendance</a>
+        <a routerLink="/leave" class="list-group-item list-group-item-action">Leave</a>
+        <a routerLink="/payroll" class="list-group-item list-group-item-action">Payroll</a>
+        <a routerLink="/misreport" class="list-group-item list-group-item-action">MIS Reports</a>
+        <a  class="list-group-item list-group-item-action" (click)="logout()">Logout</a>
+      </div>
+    </div>
+  
+    <!-- Main Content Area -->
+    <div class="flex-grow-1 p-3">
+      <router-outlet></router-outlet>
+    </div>
+  </div>

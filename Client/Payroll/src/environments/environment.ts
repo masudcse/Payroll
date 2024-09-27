@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   hmr:true,
-  apiBaseUrl: 'https://localhost:7051/api'  ///base URL access from HTTPClient
+  apiBaseUrl: 'https://localhost:7051/api/'  ///base URL access from HTTPClient
 };
 
 /*

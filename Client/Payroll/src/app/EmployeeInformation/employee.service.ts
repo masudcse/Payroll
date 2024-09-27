@@ -10,7 +10,7 @@ export class EmployeeService {
 
   constructor(private http:HttpClient) { }
 
-  URL:string = environment.apiBaseUrl + '/EmployeePersonal';
+  URL:string = environment.apiBaseUrl + 'EmployeePersonal';
   employeeList: EmployeePersonal[]=[];
   employeeData:EmployeePersonal = new EmployeePersonal();
 
