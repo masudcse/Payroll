@@ -18,6 +18,11 @@ namespace Payroll.Application.Services.Payroll
             _employeePersonalRepository = employeePersonalRepository;
         }
 
+        public async Task DeleteEmployeePersonal(int employeeId)
+        {
+            await _employeePersonalRepository.DeleteEmployeePersonal(employeeId);
+        }
+
         public async Task<List<EmployeePersonalDTOs>> GetEmployeePersonalList()
         {
             var employeePersonal = await _employeePersonalRepository.GetEmployeePersonalList();

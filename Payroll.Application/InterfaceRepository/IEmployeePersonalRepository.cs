@@ -12,5 +12,7 @@ namespace Payroll.Application.InterfaceRepository
     {
         Task<List<EmployeePersonal>> GetEmployeePersonalList();
         public Task InsertEmployeePersonal(EmployeePersonal employeePersonal);
+
+        public Task DeleteEmployeePersonal(int employeeId);
     }
 }

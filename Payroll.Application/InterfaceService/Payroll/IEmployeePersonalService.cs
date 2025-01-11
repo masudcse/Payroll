@@ -11,5 +11,6 @@ namespace Payroll.Application.InterfaceService.Payroll
     {
         Task<List<EmployeePersonalDTOs>> GetEmployeePersonalList();
         public Task InsertEmployeePersonal(EmployeePersonalDTOs employeePersonalDTOs);
+        public Task DeleteEmployeePersonal(int employeeId);
     }
 }

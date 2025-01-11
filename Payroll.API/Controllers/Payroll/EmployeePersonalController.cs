@@ -15,6 +15,7 @@ namespace Payroll.API.Controllers.Payroll
         {
             _employeePersonalService = employeePersonalService;
         }
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> PostEmployeePersonal(EmployeePersonalDTOs employeePersonalDTO)
         {
@@ -28,5 +29,13 @@ namespace Payroll.API.Controllers.Payroll
             var employeePersonalList = await _employeePersonalService.GetEmployeePersonalList();
             return Ok(employeePersonalList);
         }
+
+        [HttpDelete("{employeeId}")]
+        public async Task<IActionResult> DeleteEmployeePersonal(int employeeId)
+        {
+            await _employeePersonalService.DeleteEmployeePersonal(employeeId);
+            return Ok();
+        }
+
     }
 }
