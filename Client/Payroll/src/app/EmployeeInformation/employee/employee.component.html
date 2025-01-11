@@ -72,6 +72,7 @@
             <th scope="col">Employee Address</th>
             <th scope="col">Employee Contact Number</th>
             <th scope="col">Employee Gender</th>
+            <th scope="col">Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -81,6 +82,10 @@
             <td>{{emp.address}}</td>
             <td>{{emp.contactNo}}</td>
             <td>{{emp.gender}}</td>
+            <td>
+              <button class="btn btn-primary me-2" (click)="onEdit(emp)">Edit</button>
+              <button class="btn btn-danger" (click)="onDelete(emp?.employeePersonalId)">Delete</button>
+            </td>
         </tr>
         </tbody>
 

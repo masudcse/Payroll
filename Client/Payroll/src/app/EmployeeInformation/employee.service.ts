@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { EmployeePersonal } from './employeeModel';
 
@@ -14,8 +14,28 @@ export class EmployeeService {
   employeeList: EmployeePersonal[]=[];
   employeeData:EmployeePersonal = new EmployeePersonal();
 
-     
-  getAllemployee(){
+  getToken()
+  {
+    //console.log(localStorage.getItem('token'));
+    return localStorage.getItem('token');
+  }
+  getAllemployee() {
+    const token = this.getToken(); // Get the token from local storage
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}` // Include token in Authorization header
+    });
+    this.http.get<EmployeePersonal[]>(this.URL, { headers })
+    .subscribe({
+      next: res => {
+        console.log(res);
+        this.employeeList = res; // Assign response to employeeList
+      },
+      error: err => {
+        console.log(err); // Log any errors
+      }
+    });
+}
+  /*getAllemployee(){
     this.http.get(this.URL)
     .subscribe({
       next: res=>{
@@ -26,11 +46,22 @@ export class EmployeeService {
       console.log(err)
     }
   })   
-}
+}*/
 
-saveEmployee(){
-  return this.http.post(this.URL,this.employeeData)
-  
- }
+  saveEmployee() {
+    const token = this.getToken(); // Get the token from local storage
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}` // Include token in Authorization header
+    });
+    return this.http.post(this.URL, this.employeeData, { headers })
+
+  }
+  deleteEmployee(employeeId:number){
+    const token = this.getToken(); // Get the token from local storage
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}` // Include token in Authorization header
+    });
+    return this.http.delete(`${this.URL}/${employeeId}`, { headers });
+  }
 
 }
